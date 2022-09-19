@@ -1,0 +1,228 @@
+.image-box {
+    width: 60%;
+}
+.image-box > img {
+    object-fit: cover;
+    display: block;
+    -webkit-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+}
+
+.item-destination > .mask{
+   bottom: 1rem;
+   left:5px;
+}
+/* .inline-destination > div {
+    display: inline;
+} */
+
+.font-2rem {
+    font-size: 2rem;
+}
+
+.our-packages {
+    background-color: #fff8f8;
+}
+.package-image img {
+    max-height: 210px;
+    width: 100%;
+    width: full-content;
+    margin-left: 2px;
+}
+.package-card {
+    width: 30%;
+}
+.card-content-section {
+    background-color: white;
+    width: calc(100% + 4px);
+    line-height: 2;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.card-content {
+    padding-left:2px;
+}
+.card-content .button {
+    padding-block: 0.2px;
+}
+.why-choose-us {
+    background-color: #EBEBEB;
+
+}
+
+.choose-heading::after {
+    position: absolute;
+    height: 4px;
+    width: 20%;
+    background-color: red;
+    content: '';
+    left:0;
+    bottom:-1rem;
+
+}
+
+.our-service ul li {
+    list-style: '=>';
+    padding:10px;
+}
+
+.why-choose-us-division {
+    width:50%;
+    max-height: 300px;
+    background-color: #EBEBEB;
+}
+.enquiry-us-division {
+    width: 50%;
+    background-color: #EBEBEB;
+}
+.footer {
+    background-color: #1A1A3D;
+}
+
+
+.footer-menu-section,
+.footer-contact-us {
+    width: 33%;
+}
+.footer-menu-ul li {
+    padding-block: 5px;
+}
+.footer-about-us-contain {
+    text-align: justify;
+}
+.popular-destination-package {
+    background-color: rgb(238, 252, 255);
+}
+
+/*============== new css ============== */
+.hero {
+    transition: background 0.3s, border 0.3s, border-radius 0.3s,
+    box-shadow 0.3s;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/assets/img/bg-banner-home2-01.jpg");
+}
+/*.elementor-background-overlay {*/
+/*    background-color: #000000;*/
+/*    opacity: 0.65;*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    z-index: 0;*/
+/*}*/
+
+.search-btn {
+    align-self: end;
+    margin-left: 25px;
+}
+.hero-text {
+    font-size: 4rem;
+    text-transform: none;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+}
+.hero-form-divison {
+    padding-left: 10px;
+}
+.hero-form-divison > label,
+.hero-form-divison > input {
+    display: block;
+}
+
+.input-option {
+    padding-block: 0.2rem;
+}
+.ovabrw-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    background-color: red;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #fff;
+    border: unset;
+    padding: 18px 32px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.hero-form {
+    padding: 25px 28px;
+    box-shadow: 10px 2px 40px rgb(0 0 0 / 14%);
+    border-radius: 10px;
+}
+.milestone-section {
+    background-color: #fd4c5c;
+}
+.milestone-section > div {
+    width: 75%;
+    margin: auto;
+}
+
+.block-img {
+    background: url("/assets/img/bg-section-destination.png") no-repeat 0, 0 #1d1d3d;
+    height: 100vh;
+    width: 100%;
+    background-color: #1d1d3d;
+    /* float: left; */
+    /* margin: 5px; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+.block-img h3{
+    color:#fff;
+}
+
+.popular-destination-division {
+    background-image: url("/assets/img/bg-section-destination.png");
+    position: relative;
+    height: 100%;
+}
+.image-detination {
+    background-color: rgba(248, 247, 216, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay-section {
+    position: relative;
+    background-color: #1a1a3d;
+}
+.popular-destination {
+    isolation: isolation;
+    font-size: 4rem;
+}
+.popular-destination-container {
+    z-index: 999;
+    isolation: auto;
+}
+
+@media only screen and (max-width: 1025px) {
+    .package-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .package-card {
+        width: 80%;
+    }
+    .why-choose-us-container {
+        flex-direction: column;
+    }
+    .enquiry-us-division {
+        margin-left: 2px;
+        margin-top: 10px;
+        width: 100%;
+    }
+    .milestone-container {
+        justify-content: center;
+    }
+}
