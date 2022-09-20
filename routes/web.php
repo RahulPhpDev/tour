@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomePageController;
+use  App\Http\Controllers\Admin\{
+    DestinationController,
+    PackageTypeController
+};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,5 +26,6 @@ Route::get('/dashboard', function () {
 Route::prefix('admin')->name('admin.')->middleware('auth')->group( function () {
     Route::resource('destination', App\Http\Controllers\Admin\DestinationController::class);
     Route::resource('package', App\Http\Controllers\Admin\PackageController::class);
+    Route::resource('package-type', PackageTypeController::class);
 });
 require __DIR__.'/auth.php';

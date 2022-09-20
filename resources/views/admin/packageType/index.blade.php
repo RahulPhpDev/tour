@@ -1,0 +1,64 @@
+@extends('admin.layout.theme')
+@section('content')
+
+
+    <div class="flex overflow-hidden bg-white pt-16">
+
+        <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div>
+    <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
+        <main>
+            <div class="pt-6 px-4">
+                <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
+                    <div class="bg-white shadow rounded-lg p-4  ">
+                        <button>
+                        <a href="{{route('admin.package-type.create')}}" class=" mb-10 hidden sm:inline-flex ml-5 text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 ml-0 py-2.5 text-center items-right mr-3">
+                           Add
+                        </a>
+                        </button>
+                        
+                         <!-- Session Status -->
+                     <x-auth-session-status class="mb-4" :status="session('status')" />
+
+                        <div class="block w-full overflow-x-auto">
+                            <table class="items-center w-full bg-transparent border-collapse">
+                                <thead>
+                                <tr>
+                                    <th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Name</th>
+                                    <th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Description</th>
+                                    <th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Price</th>
+                                    <th class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">Image</th>
+
+                                </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100">
+                                @foreach($records as $record)
+                                    <tr class="text-gray-500">
+                                        <th class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
+                                            {{$record->title}}
+                                        </th>
+                                        <td class="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">
+                                            {{$record->description}}
+                                        </td>
+                                        <td class="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">
+                                            {{$record->price}}
+                                        </td>
+
+                                        <td class="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">
+                                           <img src = "{{ optional($record->image)->src }}">
+                                        </td>
+
+                                    </tr>
+                                @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+      
+    </div>
+    </div>
+@endsection

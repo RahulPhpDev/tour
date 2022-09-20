@@ -19,6 +19,12 @@
                     </li>
 
                     <li>
+                        <a  href="{{route('admin.package-type.index')}}" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                            <span class="ml-3 flex-1 whitespace-nowrap">Package Types</span>
+                        </a>
+                    </li>
+
+                    <li>
                         <a  href="{{route('admin.package.index')}}" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
                             <span class="ml-3 flex-1 whitespace-nowrap">Package</span>
                         </a>
