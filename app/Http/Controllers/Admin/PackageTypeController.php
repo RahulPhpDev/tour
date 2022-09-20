@@ -17,6 +17,7 @@ class PackageTypeController extends Controller
     public function index()
     {
        $records =  PackageType::query()->get()->sortByDesc('id');
+       // dd($records);
         return view('admin.packageType.index', compact('records'));
     }
 
@@ -38,7 +39,9 @@ class PackageTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+         $record = PackageType::query()->create($request->only('type'));
+         return  redirect()->route('admin.package-type.index')->with('status', 'Created');
     }
 
     /**
@@ -58,9 +61,9 @@ class PackageTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(PackageType $packageType)
     {
-        //
+        return view('admin.packageType.edit')->with('record', $packageType );
     }
 
     /**
@@ -70,9 +73,11 @@ class PackageTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, PackageType $packageType)
     {
-        //
+      $packageType->update($request->only('type'));
+      return  redirect()->route('admin.package-type.index')->with('status', 'Updated');
+
     }
 
     /**
@@ -81,8 +86,9 @@ class PackageTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( PackageType $packageType )
     {
-        //
+      $packageType->delete();
+      return  redirect()->route('admin.package-type.index')->with('status', 'Updated');
     }
 }

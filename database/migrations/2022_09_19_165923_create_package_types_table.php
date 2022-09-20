@@ -16,6 +16,7 @@ class CreatePackageTypesTable extends Migration
         Schema::create('package_types', function (Blueprint $table) {
             $table->id();
             $table->string('type', 20);
+            $table->softDeletes();
         });
     }
 

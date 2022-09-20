@@ -2,58 +2,80 @@
 @section('content')
 
 
-    <div class="flex overflow-hidden bg-white pt-16">
-
-        <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div>
-        <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
-            <main>
-                <div class="pt-6 px-4">
-
-
-                    <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
-
-
-                        <div class="bg-white shadow rounded-lg p-4  ">
-                            <button>
+ <button>
                                 <a href="{{route('admin.package.index')}}" class=" mb-10 hidden sm:inline-flex ml-5 text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 ml-0 py-2.5 text-center items-right mr-3">
 
                                     Show List
                                 </a>
                             </button>
                             <h3 class="text-xl leading-none font-bold text-gray-900 mb-10">Add </h3>
-                            <div class="block w-full overflow-x-auto">
-                                <form enctype="multipart/form-data" class="mt-2 lg:w-2/3 space-y-6" method = "post" action="{{route('admin.package.store')}}">
-                                    @csrf
-                                    <div>
-                                        <label for="name" class="text-sm font-medium text-gray-900 block mb-2">Title</label>
-                                        <input type="text" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Destination Title">
-                                    </div>
-                                    <div>
-                                        <label for="description" class="text-sm font-medium text-gray-900 block mb-2"> Description</label>
-                                        <textarea name="description" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required></textarea>
-                                    </div>
-                                    <div>
-                                        <label for="name" class="text-sm font-medium text-gray-900 block mb-2">Price</label>
-                                        <input type="text" name="price" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Price">
-                                    </div>
 
-                                    <div>
-                                        <label for="name" class="text-sm font-medium text-gray-900 block mb-2">Upload Image</label>
-                                        <input type="file" name="image" >
-                                    </div>
+<div class="rounded border  mx-auto mt-4">
+  <!-- Tabs -->
+  <ul id="tabs" class="inline-flex pt-2 px-1 w-full border-b">
+    <li class="bg-white px-4 text-gray-800 font-semibold py-2 rounded-t border-t border-r border-l -mb-px"><a id="default-tab" href="#first">Details</a></li>
+    <li class="px-4 text-gray-800 font-semibold py-2 rounded-t"><a href="#second">Cities/Hotel</a></li>
+    <li class="px-4 text-gray-800 font-semibold py-2 rounded-t"><a href="#third">Itenary</a></li>
+    <li class="px-4 text-gray-800 font-semibold py-2 rounded-t"><a href="#fourth">Excule/Include</a></li>
+    <li class="px-4 text-gray-800 font-semibold py-2 rounded-t"><a href="#gallery">Gallery</a></li>
+  </ul>
 
-                                    <button type="submit" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-base px-5 py-3 w-full sm:w-auto text-center">Save</button>
+ 
 
-                                </form>
+
+
+
+                           
+                             <!-- Tab Contents -->
+                          <div id="tab-contents">
+                            <div id="first" class="p-4">
+                             @include('admin.package.form.basic')
                             </div>
+                            <div id="second" class="hidden p-4">
+                              Second tab
+                            </div>
+                            <div id="third" class="hidden p-4">
+                              Third tab
+                            </div>
+                            <div id="fourth" class="hidden p-4">
+                              Fourth tab
+                            </div>
+                             <div id="gallery" class="hidden p-4">
+                             Gallery
+                            </div>
+                          </div>
                         </div>
-                    </div>
-                </div>
-            </main>
 
-            <p class="text-center text-sm text-gray-500 my-10">
-                &copy; 2019-2021 <a href="https://themesberg.com" class="hover:underline" target="_blank">Themesberg</a>. All rights reserved.
-            </p>
-        </div>
-    </div>
+<script type="text/javascript">
+   
+   let tabsContainer = document.querySelector("#tabs");
+
+let tabTogglers = tabsContainer.querySelectorAll("#tabs a");
+
+console.log(tabTogglers);
+
+tabTogglers.forEach(function(toggler) {
+  toggler.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    let tabName = this.getAttribute("href");
+
+    let tabContents = document.querySelector("#tab-contents");
+
+    for (let i = 0; i < tabContents.children.length; i++) {
+      
+      tabTogglers[i].parentElement.classList.remove("border-t", "border-r", "border-l", "-mb-px", "bg-white");  tabContents.children[i].classList.remove("hidden");
+      if ("#" + tabContents.children[i].id === tabName) {
+        continue;
+      }
+      tabContents.children[i].classList.add("hidden");
+      
+    }
+    e.target.parentElement.classList.add("border-t", "border-r", "border-l", "-mb-px", "bg-white");
+  });
+});
+</script>
+                       
 @endsection
+
+
