@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomePageController;
 use  App\Http\Controllers\Admin\{
     DestinationController,
-    PackageTypeController
+    CategoryController,
+    FacilityController,
+    GroupController
 };
+// https://github.com/codewithsadee/tourest/blob/master/assets/css/style.css
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +29,8 @@ Route::get('/dashboard', function () {
 Route::prefix('admin')->name('admin.')->middleware('auth')->group( function () {
     Route::resource('destination', App\Http\Controllers\Admin\DestinationController::class);
     Route::resource('package', App\Http\Controllers\Admin\PackageController::class);
-    Route::resource('package-type', PackageTypeController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('facility', FacilityController::class);
+    Route::resource('group', GroupController::class);
 });
 require __DIR__.'/auth.php';

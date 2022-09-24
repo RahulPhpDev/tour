@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\PackageType;
-
-
-class PackageTypeController extends Controller
+use App\Models\{
+    Group
+};
+class GroupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,8 @@ class PackageTypeController extends Controller
      */
     public function index()
     {
-       $records =  PackageType::query()->get()->sortByDesc('id');
-       // dd($records);
-        return view('admin.packageType.index', compact('records'));
+       $records =  Group::query()->get()->sortByDesc('id');
+        return view('admin.group.index', compact('records'));
     }
 
     /**
@@ -28,7 +27,7 @@ class PackageTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.packageType.create');
+        return view('admin.Group.create');
     }
 
     /**
@@ -40,8 +39,8 @@ class PackageTypeController extends Controller
     public function store(Request $request)
     {
 
-         $record = PackageType::query()->create($request->only('type'));
-         return  redirect()->route('admin.package-type.index')->with('status', 'Created');
+         $record = Group::query()->create($request->only('name'));
+         return  redirect()->route('admin.group.index')->with('status', 'Created');
     }
 
     /**
@@ -61,9 +60,9 @@ class PackageTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(PackageType $packageType)
+    public function edit(Group $Group)
     {
-        return view('admin.packageType.edit')->with('record', $packageType );
+        return view('admin.Group.edit')->with('record', $Group );
     }
 
     /**
@@ -73,10 +72,10 @@ class PackageTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PackageType $packageType)
+    public function update(Request $request, Group $Group)
     {
-      $packageType->update($request->only('type'));
-      return  redirect()->route('admin.package-type.index')->with('status', 'Updated');
+      $Group->update($request->only('name'));
+      return  redirect()->route('admin.group.index')->with('status', 'Updated');
 
     }
 
@@ -86,9 +85,9 @@ class PackageTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( PackageType $packageType )
+    public function destroy( Group $Group )
     {
-      $packageType->delete();
-      return  redirect()->route('admin.package-type.index')->with('status', 'Updated');
+      $Group->delete();
+      return  redirect()->route('admin.group.index')->with('status', 'Deleted');
     }
 }

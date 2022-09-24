@@ -2,7 +2,7 @@
 @section('content')
 
 
-                 <x-anchor href="{{route('admin.package-type.index')}}" >
+                 <x-anchor href="{{route('admin.facility.index')}}" >
                      {{ __('Show List') }}
                   </x-anchor>
 
@@ -12,20 +12,21 @@
                 enctype="multipart/form-data" 
                 class="mt-2 lg:w-2/3 space-y-6"
                 method = "post"
-                action="{{route('admin.package-type.update', $record->id)}}"
+                action="{{route('admin.group.update', $record->id)}}"
               >
               @method('put')
                 @csrf
                 <div>
-                    <x-label class="text-sm font-medium text-gray-900 block mb-2" for="name" :value="__('Type')" />
+                    <x-label class="text-sm font-medium text-gray-900 block mb-2" for="name" :value="__('Name')" />
                        <x-input id="type" 
                         type="text"
-                        name="type" 
+                        name="name" 
                         class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                        value="{{$record->type}}"
+                        value="{{$record->name}}"
                         required/>
                   
                 </div>
+                 
                  <x-button >
                      {{ __('update') }}
                   </x-button>

@@ -13,7 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('RoutesEnum', function () {
+            $routeEnum = app(\App\Enums\RoutesEnum::class);
+
+            return $routeEnum->routes();
+        });
     }
 
     /**

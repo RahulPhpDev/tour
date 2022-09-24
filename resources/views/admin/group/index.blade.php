@@ -4,7 +4,7 @@
             <button>
         
 
-                         <x-anchor href="{{route('admin.package-type.create')}}" >
+                         <x-anchor href="{{route('admin.group.create')}}" >
                              {{ __('Add') }}
                           </x-anchor>
             </button>
@@ -12,7 +12,7 @@
              <!-- Session Status -->
          <x-auth-session-status class="mb-4" :status="session('status')" />
         @php
-            $thead = ['Id', 'Type', 'Edit']
+            $thead = ['Id', 'Name', 'Action']
         @endphp
             <div class="block w-full overflow-x-auto">
                 <x-table>
@@ -27,10 +27,10 @@
                         @foreach($records as $record)
                             <tr class="border">
                                 <x-tdata data="{{$record->id}}" />
-                                <x-tdata data="{{$record->type}}" />
+                                <x-tdata data="{{$record->name}}" />
                                 <x-tdata class="flex" slot="true" >
-                                <x-anchor href="{{route('admin.package-type.edit', $record->id)}}" class=" h-8"> Edit </x-anchor>
-                                <form method="post" action="{{route('admin.package-type.destroy', $record->id)}}">
+                                <x-anchor href="{{route('admin.group.edit', $record->id)}}" class=" h-8"> Edit </x-anchor>
+                                <form method="post" action="{{route('admin.group.destroy', $record->id)}}">
                                     @method('delete')
                                     @csrf
                                     <button type ="submit" class="flex p-2 rounded-md text-white bg-red-400"> Delete </button>
