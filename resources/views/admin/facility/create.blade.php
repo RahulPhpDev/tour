@@ -22,7 +22,7 @@
 
                 <div>
                     <x-label class="text-sm font-medium text-gray-900 block mb-2" for="name" :value="__('Icon')" />
-                    <a href = "#" target="_blank"> Go to Fa Fa </a>
+                    <a class = "underline text-blue-300" href = "https://fontawesome.com/v4/icons/" target="_blank"> Go to Fa Fa </a>
                      <x-input id="icon" 
                         type="text"
                         name="icon" 

@@ -16,8 +16,8 @@ class Package extends Migration
          Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('descrption');
-            $table->string('facility_ids')->nullable();
+            $table->text('description');
+            $table->string('facility')->nullable();
             $table->string('price', 6)->nullable();
             $table->string('price_type', 6)->nullable();
             $table->text('include')->nullable();

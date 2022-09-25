@@ -6,9 +6,9 @@
 @endphp  
 
                     
-                 <x-anchor href="{{route($route['index'])}}" >
-                     {{ __('Show List') }}
-                  </x-anchor>
+ <x-anchor href="{{route($route['index'])}}" >
+     {{ __('Show List') }}
+  </x-anchor>
 
         <h3 class="text-xl leading-none font-bold text-gray-900 mb-2">Add </h3>
         <div class="block w-full overflow-x-auto">

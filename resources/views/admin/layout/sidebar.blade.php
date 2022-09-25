@@ -33,12 +33,8 @@
 
                     <li>
                         <button data-collapse-toggle = "dropdown-setting"> Setting </button>
-                        <ul id = "dropdown-setting">
-                                <li>
-                                     <a  href="{{route('admin.facility.index')}}" class="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
-                                        <span class="ml-3 flex-1 whitespace-nowrap">Facility</span>
-                                    </a>
-                                </li>
+                                   <x-sidebar-link icon="fa-gift" url="{{route('admin.facility.index')}}" value="Facility" />
+
                                    <x-sidebar-link icon="fa-users" url="{{route('admin.group.index')}}" value="Group" />
                         </ul>
                        

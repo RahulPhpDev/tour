@@ -13,10 +13,10 @@ class CreateIternariesTable extends Migration
      */
     public function up()
     {
-
-          Schema::table('packages', function (Blueprint $table) {
-            $table->tinyInteger('step')->nullable()->after('title');
-          });
+// Itinerary
+        Schema::table('packages', function(Blueprint $table) {
+            $table->string('src')->nullable()->after('completed_step');
+        });
         Schema::create('itineraries', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('package_id');

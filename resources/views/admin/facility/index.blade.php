@@ -28,7 +28,9 @@
                             <tr class="border">
                                 <x-tdata data="{{$record->id}}" />
                                 <x-tdata data="{{$record->name}}" />
-                                <x-tdata data="{{$record->icon}}" />
+                                <x-tdata>
+                                        <span class="fa fa-{{$record->icon}}"></span>
+                                </x-tdata>
                                 <x-tdata class="flex" slot="true" >
                                 <x-anchor href="{{route('admin.facility.edit', $record->id)}}" class=" h-8"> Edit </x-anchor>
                                 <form method="post" action="{{route('admin.facility.destroy', $record->id)}}">
