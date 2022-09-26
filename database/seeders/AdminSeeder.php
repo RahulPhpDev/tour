@@ -20,6 +20,6 @@ class AdminSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => 123456
         ];
-        User::query()->create($admin);
+        User::query()->updateOrCreate(['email' => 'admin@admin.com'],$admin);
     }
 }

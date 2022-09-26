@@ -38,14 +38,11 @@ class Package extends Model
     {
         return $this->hasMany(Itinerary::class);
     }
+    public function setFacilityAttribute($value)
+    {
+       $this->attribute['facility'] = implode(',', $value);
+    }
 
-    protected function facility(): Attribute
-        {
-            return new Attribute(
-                // get: fn ($value) => [1,2 ],
-                set: fn($value) => implode(',', $value)
-            );
-        }
 
     public function getCompletedAttribute()
     {

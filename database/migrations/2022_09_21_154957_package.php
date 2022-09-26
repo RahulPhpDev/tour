@@ -13,9 +13,12 @@ class Package extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('packages');
+
          Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->nullable();
             $table->text('description');
             $table->string('duration', 50)->nullable();
             $table->string('facility')->nullable();
