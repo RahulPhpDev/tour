@@ -15,7 +15,7 @@ class Package extends Model
    protected $guarded = [];
    protected $with = ['image', 'category', 'itinerary'];
 
-    protected $appends = ['completed'];
+    protected $appends = ['completed', 'facility_list'];
 
 
     public function image()
@@ -38,9 +38,22 @@ class Package extends Model
     {
         return $this->hasMany(Itinerary::class);
     }
+
     public function setFacilityAttribute($value)
     {
-       $this->attribute['facility'] = implode(',', $value);
+       $this->attributes['facility'] = implode(',', $value);
+    }
+
+    public function getFacilityListAttribute()
+    {
+        return Facility::whereIn('id', explode(',', $this->facility))->get();
+    }
+    public function facilities()
+    {
+        $facilityId = $this->getOriginal('facility');
+        dd($facilityId, $this->facility);
+
+        return Facility::whereIn('id', explode(',', $facilityId))->get();
     }
 
 

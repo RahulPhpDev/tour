@@ -3,7 +3,7 @@
     <title>App Name - @yield('title')</title>
 
     @include('admin.layout.style')
-    @include('frontend.layout.script')
+    @include('admin.layout.script')
 </head>
 <body>
 

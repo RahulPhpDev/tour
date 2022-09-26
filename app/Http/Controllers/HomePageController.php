@@ -18,7 +18,7 @@ class HomePageController extends Controller
     public function show($id) {
 
         $packages = Package::query()->findOrFail($id);
-         // dd($packages);
+        //  dd($packages);
         return view('frontend.package.index', compact('packages'));
 
     }

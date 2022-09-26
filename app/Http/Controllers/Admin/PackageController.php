@@ -104,7 +104,7 @@ public function storeOverview($request)
     $package->category()->attach($request->category);
     return redirect()
             ->route('admin.package.create', [
-                'id' =>  $record->id,
+                'id' =>  $package->id,
                  'completed_step' => 1
             ]);
 }
@@ -128,7 +128,7 @@ public function storeItenary($request)
         });
     return redirect()
                     ->route('admin.package.create', [
-                        'id' =>  $record->id,
+                        'id' =>  $package->id,
                          'completed_step' => 3
                     ]);
 }

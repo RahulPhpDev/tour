@@ -25,7 +25,6 @@
                <input name ="image[]" multiple="multiple" type="file">
             </div>
             @endif
-           	@if($request->query('page') )  'dfd' @endif
  				<div>
                       <button type="submit" 
                         @class([

@@ -6,11 +6,9 @@
 $route = app('RoutesEnum')['adminCategory']; 
 @endphp  
             <button>
-        
-
-                         <x-anchor href="{{route($route['create'])}}" >
-                             {{ __('Add') }}
-                          </x-anchor>
+                        <x-anchor href="{{route($route['create'])}}" >
+                            {{ __('Add') }}
+                    </x-anchor>
             </button>
             
              <!-- Session Status -->
