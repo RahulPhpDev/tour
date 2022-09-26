@@ -16,8 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-       $records =  Category::query()->get()->sortByDesc('id');
-       // dd($records);
+       $records =  Category::query()->orderBy('id', 'desc')->paginate(10);
         return view('admin.category.index', compact('records'));
     }
 

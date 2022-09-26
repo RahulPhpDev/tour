@@ -20,7 +20,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $records = Package::with('image')->get()->sortByDesc('id');
+        $records = Package::with('image')->latest()->paginate(10);
         return view('admin.package.index', compact('records'));
     }
 
@@ -38,7 +38,7 @@ class PackageController extends Controller
             $explode = explode('?', $request->getRequestUri());
             $queryParamInString = $explode[1];
         }
-        // dump($package);
+        // dd($package->hotel_city);
 
         $category =  Category::pluck('type', 'id')->prepend('Please Select');
         $facility =  Facility::pluck('name', 'id')->prepend('Please Select');
@@ -54,22 +54,13 @@ class PackageController extends Controller
     public function store(Request $request)
     {
         if ($request->input('ongoing_step') == 1) {
-            $record = $this->storeOverview($request);
-            return redirect()
-                    ->route('admin.package.create', [
-                        'id' =>  $record->id,
-                         'completed_step' => 1
-                    ]);
+           return $this->storeOverview($request);
         }
-
+        if ($request->input('ongoing_step') == 2) {
+            return $this->storeCitiesHotel($request);
+        }
         if ($request->input('ongoing_step') == 3) {
-            if (!$request->query('id')) return route()->redirect()->with('status', 'Please add overview first');
-            $record = $this->storeItenary($request);
-            return redirect()
-                    ->route('admin.package.create', [
-                        'id' =>  $record->id,
-                         'completed_step' => 3
-                    ]);
+            return $this->storeItenary($request);
         }
 
         if ($request->input('ongoing_step') == 4) {
@@ -84,6 +75,8 @@ class PackageController extends Controller
         }
 
         if ($request->input('ongoing_step') == 5 && $request->hasFile('image')) {
+            if (!$request->query('id')) return route()->redirect()->with('status', 'Please add overview first');
+
             $package =  Package::findOrFail($request->query('id'));
              $package->update(['completed_step' => 5 ] );  
 
@@ -99,7 +92,7 @@ public function storeOverview($request)
 {
     $package = Package::query()->updateOrCreate(
         ['id' => $request->query('id')],
-         $request->only('title', 'description', 'completed_step', 'price', 'facility')
+         $request->only('title', 'description', 'completed_step', 'price', 'facility', 'duration')
     );
 
      if($request->hasFile('image') && $request->image->isValid()) {
@@ -109,11 +102,16 @@ public function storeOverview($request)
 
     $package->update(['completed_step' => $package->completed_step == 5 ? 5 : 2 ] );  
     $package->category()->attach($request->category);
-    return  $package;
+    return redirect()
+            ->route('admin.package.create', [
+                'id' =>  $record->id,
+                 'completed_step' => 1
+            ]);
 }
 
 public function storeItenary($request)
 {
+   if (!$request->query('id')) return route()->redirect()->with('status', 'Please add overview first');
     $package = Package::query()->findOrFail($request->query('id'));
     $package->update(['completed_step' => $package->completed_step == 5 ? 5 : 3 ] );  
     if ($package->itinerary) $package->itinerary()->delete();
@@ -128,7 +126,37 @@ public function storeItenary($request)
            }
             
         });
-    return  $package;
+    return redirect()
+                    ->route('admin.package.create', [
+                        'id' =>  $record->id,
+                         'completed_step' => 3
+                    ]);
+}
+
+public function storeCitiesHotel($request)
+{
+   if (!$request->query('id')) return route()->redirect()->with('status', 'Please add overview first');
+    $package = Package::query()->findOrFail($request->query('id'));
+    $index = 0;
+    $record = collect([]);
+    collect($request->get('city'))->map( function ($value, $key)  use (&$index, $request, $record) {
+        $record->push( [ 
+            'city' => $request->city[$index],
+            'budget' => $request->budget[$index] ?: 'On Request',
+             'two_star' =>$request->two_star[$index]?: 'On Request',
+            'three_star' => $request->three_star[$index]?: 'On Request',
+             'four_star' => $request->four_star[$index] ?: 'On Request'
+              ]
+          );
+        $index++;
+    });
+    $package->update(['hotel_city' => $record->toJson()]);
+    return  redirect()
+                    ->route('admin.package.create', [
+                        'id' =>  $request->query('id'),
+                         'completed_step' => 2
+                    ]);
+    
 }
     /**
      * Display the specified resource.

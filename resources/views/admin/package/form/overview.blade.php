@@ -52,7 +52,17 @@
                      </select>
             </div>
 
-            
+            <div>
+                <x-label for="name" :value="__('Duration')" />
+                <x-input id="type" 
+                        type="text"
+                        name="duration" 
+                        placeholder="Duration"
+                        value="{{$package->duration}}"
+                        required
+                />
+              
+            </div>
 
             <div>
                 <x-label for="name" :value="__('Price')" />

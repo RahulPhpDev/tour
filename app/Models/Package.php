@@ -15,6 +15,8 @@ class Package extends Model
    protected $guarded = [];
    protected $with = ['image', 'category', 'itinerary'];
 
+    protected $appends = ['completed'];
+
 
     public function image()
     {
@@ -45,6 +47,14 @@ class Package extends Model
             );
         }
 
+    public function getCompletedAttribute()
+    {
+        return in_array($this->completed_step , [4,5]);
+    }
 
+    public function getHotelCityAttribute($value)
+    {
+        return json_decode($value, true); 
+    }
 
 }

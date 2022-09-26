@@ -14,11 +14,7 @@
 
                             <div class=" md:px-8 md:py-2 text-center md:text-left space-y-4">
                             <h2 class="font-bold">  {{$record->title}} </h2>
-                            <blockquote>
-                            <p class="text-lg font-medium">
-                                     {!! substr($record->description, 0, 20) !!}
-                            </p>
-                            </blockquote>
+                            
                         <figcaption class="font-medium">
                             <div 
                                  @class([
@@ -59,5 +55,8 @@
 
                         </div>
                     </div>
-               
+                     {{-- {{ $users->links('pagination::tailwind') }} --}}
+                     {{ $records->links('pagination::tailwind') }}
+               <!-- This example requires Tailwind CSS v2.0+ -->
+
 @endsection

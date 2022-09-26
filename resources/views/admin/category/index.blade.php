@@ -47,5 +47,6 @@ $route = app('RoutesEnum')['adminCategory'];
                 </x-table>
             
             </div>
+            {{ $records->links('pagination::tailwind') }}
                   
 @endsection

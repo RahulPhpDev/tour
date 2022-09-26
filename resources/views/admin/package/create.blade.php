@@ -20,7 +20,7 @@
                             </div>
                             <div id="second"
                              class="@if($completed_step != 1) hidden @endif p-4">
-                              Second tab
+                             @include('admin.package.form.cities')
                             </div>
                             <div id="third" class="@if($completed_step != 2) hidden @endif p-4">
                                @include('admin.package.form.itenary')

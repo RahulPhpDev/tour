@@ -17,8 +17,9 @@ class Package extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            $table->string('duration', 50)->nullable();
             $table->string('facility')->nullable();
-            $table->string('price', 6)->nullable();
+            $table->string('price', 20)->nullable();
             $table->string('price_type', 6)->nullable();
             $table->text('include')->nullable();
             $table->text('exclude')->nullable();

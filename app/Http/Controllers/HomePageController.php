@@ -14,4 +14,12 @@ class HomePageController extends Controller
 //        dd($packages);
         return view('frontend.home' , compact('packages', 'destination'));
     }
+
+    public function show($id) {
+
+        $packages = Package::query()->findOrFail($id);
+         // dd($packages);
+        return view('frontend.package.index', compact('packages'));
+
+    }
 }

@@ -3,15 +3,17 @@
         <title>App Name - @yield('title')</title>
 
         @include('frontend.layout.style')
-        @include('frontend.layout.script')
+
     </head>
     <body>
-       @include('frontend.layout.header')
+       @include('frontend.layout.topbar')
 
-        <div class="container">
+       @include('frontend.layout.carousel')
+
+
             @yield('content')
-        </div>
 
        @include('frontend.layout.footer')
     </body>
+            @include('frontend.layout.script')
 </html>

@@ -23,8 +23,14 @@ use Illuminate\Support\Facades\Storage;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/html', function () {
+    return view('frontend.basic');
+});
+
 
 Route::get('/', [HomePageController::class, 'index']);
+
+Route::get('/package/{id}', [HomePageController::class, 'show'])->name('package.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -39,7 +45,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group( function () {
          if (file_exists($image_path )) {
                 unlink($image_path );
             }
-    $   image->delete();
+    $image->delete();
         return redirect()->route('admin.package.index')->with('status', 'Image Deleted');
     })->name('image.destroy');
 
@@ -49,11 +55,15 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group( function () {
    Route::get('/package/add-more-itenary', function () {
         return view('admin.package.form.add-more-itenary');
     })->name('package.add-more-itenary');
+   Route::get('/package/add-more-cities-hotel', function () {
+        return view('admin.package.form.add-more-cities-hotel');
+   });
 
     Route::resource('package', App\Http\Controllers\Admin\PackageController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('facility', FacilityController::class);
     Route::resource('group', GroupController::class);
+
    
 });
 require __DIR__.'/auth.php';
