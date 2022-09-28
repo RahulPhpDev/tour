@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Destination;
-use App\Models\Package;
+
+use App\Models\{
+    Package,
+    Destination,
+    Category
+};
 use Illuminate\Http\Request;
 
 class HomePageController extends Controller
@@ -21,5 +25,19 @@ class HomePageController extends Controller
         //  dd($packages);
         return view('frontend.package.index', compact('packages'));
 
+    }
+
+    public function about() {
+        return view('frontend.about.index');
+    }
+
+    public function theme($id) {
+        $categories =  Category::query()
+                        ->whereHas('package')
+                        ->with(['package' => function ($query) {
+                            $query->whereIn('completed_step', [4,5]);
+                        }])
+                        ->whereId($id)->get();
+        return view('frontend.theme.index', compact('categories'));
     }
 }

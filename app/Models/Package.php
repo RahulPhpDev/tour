@@ -51,8 +51,6 @@ class Package extends Model
     public function facilities()
     {
         $facilityId = $this->getOriginal('facility');
-        dd($facilityId, $this->facility);
-
         return Facility::whereIn('id', explode(',', $facilityId))->get();
     }
 

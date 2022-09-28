@@ -15,3 +15,21 @@
     <script src="{{ URL::asset('assets/frontend/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}" ></script>
 
     <script src="{{ URL::asset('assets/frontend/js/main.js')}}"></script>
+
+    <!-- Global site tag (gtag.js) - Google Ads: 825622930 -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-825622930"></script>
+
+<script>
+
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag(){dataLayer.push(arguments);}
+
+  gtag('js', new Date());
+
+ 
+
+  gtag('config', 'AW-825622930');
+
+</script>

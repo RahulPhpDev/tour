@@ -28,9 +28,11 @@ Route::get('/html', function () {
 });
 
 
-Route::get('/', [HomePageController::class, 'index']);
+Route::get('/', [HomePageController::class, 'index'])->name('homepage');
+Route::get('/about-us', [HomePageController::class, 'about'])->name('home.about');
 
 Route::get('/package/{id}', [HomePageController::class, 'show'])->name('package.show');
+Route::get('/theme/{id}', [HomePageController::class, 'theme'])->name('theme.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

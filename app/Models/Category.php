@@ -11,5 +11,9 @@ class Category extends Model
 
     protected $guarded = [];
    public $timestamps = false;
+
+   public function package() {
+    return $this->belongsToMany(Package::class);
+   }
     
 }
