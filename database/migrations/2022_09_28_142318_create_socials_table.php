@@ -13,19 +13,19 @@ class CreateSocialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('socials', function (Blueprint $table) {
-            $table->id();
-            $table->string('mobile')->nullable();
-            $table->string('whats_app')->nullable();
-            $table->string('email')->nullable();
-            $table->string('address')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('instagram')->nullable();
-            $table->string('twitter')->nullable();
-            $table->string('linkedin')->nullable();
-            $table->string('youtube')->nullable();
-            $table->timestamps();
-        });
+        // Schema::create('socials', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('mobile')->nullable();
+        //     $table->string('whats_app')->nullable();
+        //     $table->string('email')->nullable();
+        //     $table->string('address')->nullable();
+        //     $table->string('facebook')->nullable();
+        //     $table->string('instagram')->nullable();
+        //     $table->string('twitter')->nullable();
+        //     $table->string('linkedin')->nullable();
+        //     $table->string('youtube')->nullable();
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -35,6 +35,6 @@ class CreateSocialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('socials');
+        // Schema::dropIfExists('socials');
     }
 }

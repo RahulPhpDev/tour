@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\{
+    HomePageController,
+    EnquiryController
+};
 use  App\Http\Controllers\Admin\{
     DestinationController,
     CategoryController,
@@ -34,6 +37,7 @@ Route::get('/about-us', [HomePageController::class, 'about'])->name('home.about'
 
 Route::get('/package/{slug}', [HomePageController::class, 'show'])->name('package.show');
 Route::get('/theme/{slug}', [HomePageController::class, 'theme'])->name('theme.show');
+Route::put('/enquiry', [EnquiryController::class, 'store'])->name('enquiry.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

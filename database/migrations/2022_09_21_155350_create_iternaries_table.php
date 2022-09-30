@@ -14,24 +14,26 @@ class CreateIternariesTable extends Migration
     public function up()
     {
 // Itinerary
-        Schema::table('packages', function(Blueprint $table) {
-            // $table->string('src')->nullable()->after('completed_step');
-            $table->string('destination')->nullable()->after('slug');
-        });
-        // Schema::table('categories', function(Blueprint $table) {
-        //     $table->string('slug')->nullable()->after('type');
-        // });
+//         Schema::table('packages', function(Blueprint $table) {
+//             $table->string('src')->nullable()->after('completed_step');
+//             $table->string('slug')->nullable()->after('title');
+// 
+//             $table->string('destination')->nullable()->after('slug');
+//         });
+//         Schema::table('categories', function(Blueprint $table) {
+//             $table->string('slug')->nullable()->after('type');
+//         });
         
 
-        // Schema::create('itineraries', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->unsignedBigInteger('package_id');
-        //     $table->foreign('package_id')->references('id')->on('packages');
+        Schema::create('itineraries', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('package_id');
+            $table->foreign('package_id')->references('id')->on('packages');
 
-        //     $table->string('title');
-        //     $table->text('description')->nullable();
-        //     $table->timestamps();
-        // });
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -41,6 +43,6 @@ class CreateIternariesTable extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('itineraries');
+        Schema::dropIfExists('itineraries');
     }
 }

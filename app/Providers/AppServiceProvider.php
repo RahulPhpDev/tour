@@ -33,7 +33,10 @@ class AppServiceProvider extends ServiceProvider
     {
             $this->app_categories =  Category::query()->whereHas('package')->get();
             $this->app_packages =  Package::whereIn('completed_step', [4,5])->get();
-            $this->app_social =  Social::first();
+            $this->app_social =  Social::firstOr(function () {
+                return new Social;
+            });
+            // dd($this->app_social  ); 
        view()->composer('frontend.layout.app', function ($view) {
              $view->with([
                 'app_packages' => $this->app_packages ,
