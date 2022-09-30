@@ -6,7 +6,7 @@
         <form enctype="multipart/form-data" class="mt-2 lg:w-2/3 space-y-6" method = "post" action="{{route('admin.package.store', $queryParamInString )}}">
             @csrf
             <input type = "hidden" name = "ongoing_step" value = "3" />
-            <input type = "text" id = "times" value = "{{$times}}" />
+            <input type = "hidden" id = "times" value = "{{$times}}" />
 
    			 @foreach( $package->itinerary as $key => $itinerary)
 

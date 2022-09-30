@@ -9,22 +9,23 @@
             <div class="row">
                 @foreach($packages as $package)
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <a href="{{route('package.show', $package->id)}}" class="cursor-pointer">
+                    <a href="{{route('package.show', $package->slug)}}" class="cursor-pointer text-decoration-none">
                     <div class="package-item bg-white mb-2">
-                        <img class="img-fluid"  width = "350px" height = "230px" src="{{ $package->src}}" alt="">
+                        <img class="package-src"   src="{{ $package->src}}" alt="">
                         <div class="p-4">
                             <div class="d-flex justify-content-between mb-3">
-                                {{-- <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>Thailand</small> --}}
+                                 <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$package->destination}}</small>
                                 <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{$package->duration}}</small>
                                 {{-- <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>2 Person</small> --}}
                             </div>
-                            <a class="h5 text-decoration-none" href="">
+                            <span class="h5 text-decoration-none" > 
                                 {{$package->title}}
-                            </a>
+                                </span>
+                         
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
                                   {{--   <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6> --}}
-                                    <h5 class="m-0"> {{$package->price ?: 'On Request'}}</h5>
+                                    <h5 class="m-0"> &#x20B9; :{{$package->price ?: 'On Request'}}</h5>
                                 </div>
                             </div>
                         </div>
@@ -38,3 +39,10 @@
         </div>
     </div>
     <!-- Packages End -->
+
+    <style>
+        .package-src {
+            width: 350px;
+            height:197px;
+        }
+    </style>

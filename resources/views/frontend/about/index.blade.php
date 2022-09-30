@@ -3,7 +3,7 @@
 @section('content')
 <div class="pg-parent" style = "padding: 2rem;"> 
     <div>
-   <h5> Saksham Holidays is online tour operator & Provide complete India tour solutions to domestic and foreign tourists in India trip. </h5>
+   <h5> {{trans('app_content.about_us')}} </h5>
 </div>
 
 <div>

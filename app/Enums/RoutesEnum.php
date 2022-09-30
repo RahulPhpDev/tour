@@ -15,6 +15,14 @@ class RoutesEnum {
                 'destroy' =>  "admin.category.destroy",
                 'edit' =>  "admin.category.edit",
                 'update' =>  "admin.category.update",
+            ],
+            
+            'adminSocial' => [
+                'index' =>  "admin.social.index",
+                'create' =>  "admin.social.create",
+                'store' =>  "admin.social.store",
+                'edit' =>  "admin.social.edit",
+                'update' =>  "admin.social.update",
             ]
         ];
     }

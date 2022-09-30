@@ -4,28 +4,43 @@
             <div class="row">
                 <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center">
-                        <p><i class="fa fa-envelope mr-2"></i>info@saksham.com</p>
+                        <p><i class="fa fa-envelope mr-2"></i>
+                            {{$app_social->email}}
+                        </p>
                         <p class="text-body px-3">|</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+91 8126270308</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>+91  {{$app_social->mobile}}</p>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
                     <div class="d-inline-flex align-items-center">
-                        <a class="text-primary px-3" href="">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="text-primary px-3" href="">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a class="text-primary px-3" href="">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a class="text-primary px-3" href="">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="text-primary pl-3" href="">
+                        @if($app_social->facebook)
+                            <a class="text-primary px-3" target="_blank" href="{{$app_social->facebook}}">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        @endif
+
+                        @if($app_social->twitter)
+                            <a class="text-primary px-3" target="_blank" href="{{$app_social->twitter}}">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        @endif
+
+                        @if($app_social->linkedin)
+                            <a class="text-primary px-3" target="_blank" href="{{$app_social->linkedin}}">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        @endif    
+                        @if($app_social->instagram)
+                            <a class="text-primary px-3"  target="_blank" href="{{$app_social->instagram}}">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        @endif      
+
+                        @if($app_social->youtube)
+                        <a class="text-primary pl-3" target="_blank" href="{{$app_social->youtube}}">
                             <i class="fab fa-youtube"></i>
                         </a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -39,8 +54,9 @@
     <div class="container-fluid position-relative nav-bar p-0">
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-                <a href="" class="navbar-brand">
-                    <h1 class="m-0 text-primary"><span class="text-dark">TRAVEL</span>ER</h1>
+                <a href="/" class="navbar-brand">
+                    <!-- <h1 class="m-0 text-primary"><span class="text-dark">TRAVEL</span>ER</h1> -->
+                    <img src = "{{trans('app_content.logo_url') }}" width="229px" height = "67px"/>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -53,7 +69,7 @@
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Theme</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 @foreach($app_categories as $category) 
-                                   <a href="{{route('theme.show', $category->id)}}" class="dropdown-item">{{$category->type}}</a>
+                                   <a href="{{route('theme.show', $category->slug)}}" class="dropdown-item">{{$category->type}}</a>
                                 @endforeach
                             </div>
                         </div>
@@ -61,7 +77,7 @@
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Packages</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 @foreach($app_packages as $package) 
-                                   <a href="{{route('package.show', $package->id)}}" class="dropdown-item">{{$package->title}}</a>
+                                   <a href="{{route('package.show', $package->slug)}}" class="dropdown-item">{{$package->title}}</a>
                                 @endforeach
                                
                             </div>

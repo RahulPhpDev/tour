@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
-
 
 class Package extends Model
 {
@@ -16,8 +15,22 @@ class Package extends Model
    protected $with = ['image', 'category', 'itinerary'];
 
     protected $appends = ['completed', 'facility_list'];
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_admin' => 'integer',
+    ];
 
-
+    protected static function boot() {
+        parent::boot();
+        self::created(function ($model) {
+            $model->slug = Str::slug($model->title.'_'.$model->id, '-');
+            $model->save();
+        });
+    }
     public function image()
     {
         return $this->morphMany(Image::class, 'image');

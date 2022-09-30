@@ -19,10 +19,10 @@
                             <div 
                                  @class([
                                     'text-sky-500 mt-3 dark:text-sky-400 text-red-500',
-                                    'text-green-500' => $record->completed_step == 5
+                                    'text-green-500' => $record->completed
                                 ]) 
                             >
-                                  @if($record->completed_step == 5) Complete @else  Pending @endif
+                                  @if($record->completed) Complete @else  Pending @endif
                             </div>
                             <div class="mt-3 text-slate-700 flex dark:text-slate-500">
                                 <form method="post" action="{{route('admin.package.destroy', $record->id)}}">

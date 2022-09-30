@@ -15,17 +15,23 @@ class CreateIternariesTable extends Migration
     {
 // Itinerary
         Schema::table('packages', function(Blueprint $table) {
-            $table->string('src')->nullable()->after('completed_step');
+            // $table->string('src')->nullable()->after('completed_step');
+            $table->string('destination')->nullable()->after('slug');
         });
-        Schema::create('itineraries', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('package_id');
-            $table->foreign('package_id')->references('id')->on('packages');
+        // Schema::table('categories', function(Blueprint $table) {
+        //     $table->string('slug')->nullable()->after('type');
+        // });
+        
 
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->timestamps();
-        });
+        // Schema::create('itineraries', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->unsignedBigInteger('package_id');
+        //     $table->foreign('package_id')->references('id')->on('packages');
+
+        //     $table->string('title');
+        //     $table->text('description')->nullable();
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -35,6 +41,6 @@ class CreateIternariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('iternaries');
+        // Schema::dropIfExists('itineraries');
     }
 }

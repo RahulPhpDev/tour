@@ -36,6 +36,7 @@
                                    <x-sidebar-link icon="fa-gift" url="{{route('admin.facility.index')}}" value="Facility" />
 
                                    <x-sidebar-link icon="fa-users" url="{{route('admin.group.index')}}" value="Group" />
+                                   <x-sidebar-link icon="fa-newspaper-o" url="{{route('admin.social.index')}}" value="Social" />
                         </ul>
                        
                     </li>

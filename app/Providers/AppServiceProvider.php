@@ -5,7 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\{
     Category,
-    Package
+    Package,
+    Social
 };
 
 class AppServiceProvider extends ServiceProvider
@@ -30,10 +31,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app_categories =  Category::query()->whereHas('package')->get();
-        $this->app_packages =  Package::whereIn('completed_step', [4,5])->get();
+            $this->app_categories =  Category::query()->whereHas('package')->get();
+            $this->app_packages =  Package::whereIn('completed_step', [4,5])->get();
+            $this->app_social =  Social::first();
        view()->composer('frontend.layout.app', function ($view) {
-        $view->with(['app_packages' => $this->app_packages ,'app_categories' => $this->app_categories  ]);
+             $view->with([
+                'app_packages' => $this->app_packages ,
+                'app_categories' => $this->app_categories,
+                'app_social' => $this->app_social
+              ]);
        });
    
     }

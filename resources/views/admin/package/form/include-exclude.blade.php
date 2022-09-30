@@ -2,7 +2,7 @@
 
 <form enctype="multipart/form-data" class="mt-2 lg:w-2/3 space-y-6" method = "post" action="{{route('admin.package.store', $queryParamInString )}}">
 	@csrf
-            <input type = "text" name = "ongoing_step" value = "4" />
+            <input type = "hidden" name = "ongoing_step" value = "4" />
 
             <div>
                 <x-label for="name" :value="__('Include')" />

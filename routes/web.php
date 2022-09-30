@@ -6,7 +6,8 @@ use  App\Http\Controllers\Admin\{
     DestinationController,
     CategoryController,
     FacilityController,
-    GroupController
+    GroupController,
+    SocialController
 };
 use App\Models\{
     Image
@@ -31,8 +32,8 @@ Route::get('/html', function () {
 Route::get('/', [HomePageController::class, 'index'])->name('homepage');
 Route::get('/about-us', [HomePageController::class, 'about'])->name('home.about');
 
-Route::get('/package/{id}', [HomePageController::class, 'show'])->name('package.show');
-Route::get('/theme/{id}', [HomePageController::class, 'theme'])->name('theme.show');
+Route::get('/package/{slug}', [HomePageController::class, 'show'])->name('package.show');
+Route::get('/theme/{slug}', [HomePageController::class, 'theme'])->name('theme.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -65,6 +66,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group( function () {
     Route::resource('category', CategoryController::class);
     Route::resource('facility', FacilityController::class);
     Route::resource('group', GroupController::class);
+    Route::resource('social', SocialController::class)->only('index', 'create', 'store', 'edit', 'update');
 
    
 });

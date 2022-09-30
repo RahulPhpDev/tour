@@ -37,11 +37,8 @@
             </div>
            
             <div class="d-flex flex-column mt-4">
-                <a class="text-white btn btn-primary btn-sm" href ="{{route('package.show', $package->id)}}">
-                <!-- <button class="btn btn-primary btn-sm" type="button"> -->
-                      
+                <a class="text-white btn btn-primary btn-sm" href ="{{route('package.show', $package->slug)}}">
                  Details
-                <!-- </button> -->
             </a>
             <!-- Button trigger modal -->
               <button class="btn btn-outline-primary btn-sm mt-2" type="button" data-toggle="modal" data-target="#exampleModal">

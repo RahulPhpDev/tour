@@ -13,7 +13,7 @@ class Package extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('packages');
+        // Schema::dropIfExists('packages');
 
          Schema::create('packages', function (Blueprint $table) {
             $table->id();

@@ -19,10 +19,10 @@ class HomePageController extends Controller
         return view('frontend.home' , compact('packages', 'destination'));
     }
 
-    public function show($id) {
+    public function show($slug) {
 
-        $packages = Package::query()->findOrFail($id);
-        //  dd($packages);
+        $packages = Package::query()->whereSlug($slug)->first();
+    //   dd($packages);
         return view('frontend.package.index', compact('packages'));
 
     }
@@ -31,13 +31,13 @@ class HomePageController extends Controller
         return view('frontend.about.index');
     }
 
-    public function theme($id) {
+    public function theme($slug) {
         $categories =  Category::query()
                         ->whereHas('package')
                         ->with(['package' => function ($query) {
                             $query->whereIn('completed_step', [4,5]);
                         }])
-                        ->whereId($id)->get();
+                        ->whereSlug($slug)->get();
         return view('frontend.theme.index', compact('categories'));
     }
 }

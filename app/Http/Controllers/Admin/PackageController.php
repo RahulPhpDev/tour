@@ -38,10 +38,12 @@ class PackageController extends Controller
             $explode = explode('?', $request->getRequestUri());
             $queryParamInString = $explode[1];
         }
-        // dd($package->hotel_city);
+        // dd($package->category);
 
-        $category =  Category::pluck('type', 'id')->prepend('Please Select');
-        $facility =  Facility::pluck('name', 'id')->prepend('Please Select');
+        $category =  Category::pluck('id','type');
+        // dd($category);
+        $facility =  Facility::pluck('id', 'name');
+        // ->prepend('Please Select');
         return view('admin.package.create', compact('category', 'package', 'queryParamInString', 'facility', 'request'));
     }
 
@@ -66,7 +68,8 @@ class PackageController extends Controller
         if ($request->input('ongoing_step') == 4) {
             if (!$request->query('id')) return route()->redirect()->with('status', 'Please add overview first');
             $package =  Package::findOrFail($request->query('id'));
-             $package->update($request->only('include', 'exclude')) ;
+            $request->merge(['completed_step' => 4]);
+             $package->update($request->only('include', 'exclude', 'completed_step')) ;
             return redirect()
                     ->route('admin.package.create', [
                         'id' =>  $package->id,
@@ -92,16 +95,19 @@ public function storeOverview($request)
 {
     $package = Package::query()->updateOrCreate(
         ['id' => $request->query('id')],
-         $request->only('title', 'description', 'completed_step', 'price', 'facility', 'duration')
+         $request->only('title', 'description', 'price', 'facility', 'duration', 'destination')
     );
 
      if($request->hasFile('image') && $request->image->isValid()) {
          $path = $request->image->storeAs('public/package',now()->timestamp.'_'.$package->id.'.'. $request->image->extension());
           $package->src = $path;
    } 
-
-    $package->update(['completed_step' => $package->completed_step == 5 ? 5 : 2 ] );  
-    $package->category()->attach($request->category);
+        if (!$package->completed)
+        {
+            $package->update(['completed_step' =>  2 ] );  
+        }
+      
+    $package->category()->sync($request->category);
     return redirect()
             ->route('admin.package.create', [
                 'id' =>  $package->id,
@@ -112,7 +118,6 @@ public function storeOverview($request)
 public function storeItenary($request)
 {
    if (!$request->query('id')) return route()->redirect()->with('status', 'Please add overview first');
-    $package = Package::query()->findOrFail($request->query('id'));
     $package->update(['completed_step' => $package->completed_step == 5 ? 5 : 3 ] );  
     if ($package->itinerary) $package->itinerary()->delete();
         collect($request->title)->map( function ($item, $key) use ($package, $request) {
