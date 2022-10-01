@@ -31,24 +31,29 @@
                  
                  <div class=" flex space-x-3">
                     <div class="w-1/2">
-                        <x-label for="name" :value="__('Email')" />
-                        <x-input id="type" type="text" name="email"  value="{{$record->email}}" required/>
-                    </div>
-                    <div class="w-1/2">
                         <x-label for="name" :value="__('Address')" />
                         <x-input id="type" type="text" name="address" value="{{$record->address}}" required/>
-                    </div>                
+                    </div>      
+                    
+                    
+                    <div class="w-1/2">
+                        <x-label for="name" :value="__('Branch Address')" />
+                        <x-input id="type" type="text" name="branch_address" value="{{$record->branch_address}}" required/>
+                    </div>      
                  </div>
 
                  <div class=" flex space-x-3">
+                    
+                 <div class="w-1/2">
+                        <x-label for="name" :value="__('Email')" />
+                        <x-input id="type" type="text" name="email"  value="{{$record->email}}" required/>
+                    </div>
+
                     <div class="w-1/2">
                         <x-label for="name" :value="__('Facebook')" />
                         <x-input id="type" type="text" name="facebook" value="{{$record->facebook}}" required/>
                     </div>
-                    <div class="w-1/2">
-                        <x-label for="name" :value="__('Instagram')" />
-                        <x-input id="type" type="text" name="instagram" value="{{$record->instagram}}" required/>
-                    </div>                
+                               
                  </div>
 
                  <div class=" flex space-x-3">
@@ -66,7 +71,11 @@
                     <div class="w-1/2">
                         <x-label for="name" :value="__('Twitter')" />
                         <x-input id="type" type="text" name="twitter" value="{{$record->twitter}}" required/>
-                    </div>            
+                    </div> 
+                    <div class="w-1/2">
+                        <x-label for="name" :value="__('Instagram')" />
+                        <x-input id="type" type="text" name="instagram" value="{{$record->instagram}}" required/>
+                    </div>               
                  </div>
 
                  <x-button >

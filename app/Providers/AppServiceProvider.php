@@ -31,19 +31,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-            $this->app_categories =  Category::query()->whereHas('package')->get();
-            $this->app_packages =  Package::whereIn('completed_step', [4,5])->get();
-            $this->app_social =  Social::firstOr(function () {
-                return new Social;
-            });
-            // dd($this->app_social  ); 
-       view()->composer('frontend.layout.app', function ($view) {
-             $view->with([
-                'app_packages' => $this->app_packages ,
-                'app_categories' => $this->app_categories,
-                'app_social' => $this->app_social
-              ]);
-       });
+    //         $this->app_categories =  Category::query()->whereHas('package')->get();
+    //         $this->app_packages =  Package::whereIn('completed_step', [4,5])->get();
+    //         $this->app_social =  Social::firstOr(function () {
+    //             return new Social;
+    //         });
+    //    view()->composer('frontend.layout.app', function ($view) {
+    //          $view->with([
+    //             'app_packages' => $this->app_packages ,
+    //             'app_categories' => $this->app_categories,
+    //             'app_social' => $this->app_social
+    //           ]);
+    //    });
    
     }
 }

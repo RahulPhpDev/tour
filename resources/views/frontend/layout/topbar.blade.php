@@ -8,36 +8,39 @@
                             {{$app_social->email}}
                         </p>
                         <p class="text-body px-3">|</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+91  {{$app_social->mobile}}</p>
+                        <p><a href="tel:{{$app_social->mobile}}">
+                            <i class="fa fa-phone-alt mr-2"></i>+91  {{$app_social->mobile}}
+                            </a>
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-6 text-center text-lg-right">
                     <div class="d-inline-flex align-items-center">
                         @if($app_social->facebook)
-                            <a class="text-primary px-3" target="_blank" href="{{$app_social->facebook}}">
+                            <a class="text-primary px-3" target="_blank" href="//{{$app_social->facebook}}">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         @endif
 
                         @if($app_social->twitter)
-                            <a class="text-primary px-3" target="_blank" href="{{$app_social->twitter}}">
+                            <a class="text-primary px-3" target="_blank" href="//{{$app_social->twitter}}">
                                 <i class="fab fa-twitter"></i>
                             </a>
                         @endif
 
                         @if($app_social->linkedin)
-                            <a class="text-primary px-3" target="_blank" href="{{$app_social->linkedin}}">
+                            <a class="text-primary px-3" target="_blank" href="//{{$app_social->linkedin}}">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
                         @endif    
                         @if($app_social->instagram)
-                            <a class="text-primary px-3"  target="_blank" href="{{$app_social->instagram}}">
+                            <a class="text-primary px-3"  target="_blank" href="//{{$app_social->instagram}}">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         @endif      
 
                         @if($app_social->youtube)
-                        <a class="text-primary pl-3" target="_blank" href="{{$app_social->youtube}}">
+                        <a class="text-primary pl-3" target="_blank" href="//{{$app_social->youtube}}">
                             <i class="fab fa-youtube"></i>
                         </a>
                         @endif
@@ -82,7 +85,7 @@
                                
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="{{route('home.contact')}}" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>
             </nav>

@@ -1,16 +1,19 @@
+@extends('frontend.layout.app')
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Enquiry Form</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <form method = "post" action = "{{route('enquiry.store')}}">
+@section('content')
+
+<div class="container package-container mt-5">
+        <div class="row package-row">
+            <div class = "col-md-6 col-lg-6 col-xs-12 contact-us-section">
+                   <h5 class="mb-4" style="letter-spacing: 5px;">Contact Us</h5>
+                    <p class="pr-5"><b>Registered Office:</b> <i class="fa fa-map-marker-alt mr-2"></i>{{$app_social->address}}</p>
+                    <p class="pr-5"><b>Brach Office: </b> <i class="fa fa-map-marker-alt mr-2"></i>{{$app_social->branch_address}}</p>
+                    <p><i class="fa fa-envelope mr-2"></i> {{$app_social->email}}</p>
+                    <p><a href="tel:{{$app_social->mobile}}"><i class="fa fa-phone-alt mr-2"></i>+91   {{$app_social->mobile}} </a> </p>  
+            </div>
+
+            <div class = "col-md-6 col-lg-6 col-xs-12 form-contact">
+<form method = "post" action = "{{route('enquiry.store')}}">
             @method('put')
                 @csrf
   <div class="form-row">
@@ -72,17 +75,22 @@
 </div>
   <button type="submit" class="btn btn-primary">Enquiry</button>
 </form>
-      </div>
-     
-    </div>
-  </div>
+
+</div>
+</div>
 </div>
 
 @push('styles')
-<style>
-  label > span {
-    color: red;
-  }
-  </style>
+    <style>
+            .form-contact {
+                background: #4f4c4c;
+                color: white;
+                padding: 20px;
+                border-radius: 12px
+            }
+            .contact-us-section > p {
+                    line-height: 3rem;
+            }
+        </style>
 @endpush
-
+@endsection

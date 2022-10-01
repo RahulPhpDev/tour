@@ -14,15 +14,15 @@ class CreateIternariesTable extends Migration
     public function up()
     {
 // Itinerary
-//         Schema::table('packages', function(Blueprint $table) {
-//             $table->string('src')->nullable()->after('completed_step');
-//             $table->string('slug')->nullable()->after('title');
-// 
-//             $table->string('destination')->nullable()->after('slug');
-//         });
-//         Schema::table('categories', function(Blueprint $table) {
-//             $table->string('slug')->nullable()->after('type');
-//         });
+        Schema::table('packages', function(Blueprint $table) {
+            $table->string('src')->nullable()->after('completed_step');
+            $table->string('slug')->nullable()->after('title');
+
+            $table->string('destination')->nullable()->after('slug');
+        });
+        Schema::table('categories', function(Blueprint $table) {
+            $table->string('slug')->nullable()->after('type');
+        });
         
 
         Schema::create('itineraries', function (Blueprint $table) {

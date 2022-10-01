@@ -4,9 +4,10 @@
     
      @include('frontend.home.about')
 
+       @include('frontend.home.packages')
        @include('frontend.home.service')
 
-       @include('frontend.home.packages')
+       
 
 
        @include('frontend.home.testimonial')

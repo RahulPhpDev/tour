@@ -16,10 +16,10 @@ class AdminSeeder extends Seeder
     {
 
         $admin = [
-            'name' => 'Rahul',
-            'email' => 'admin@admin.com',
-            'password' => 123456
+            'name' => 'Saksham',
+            'email' => 'beersinghpanwar@gmail.com',
+            'password' => "Saksham@8791#"
         ];
-        User::query()->updateOrCreate(['email' => 'admin@admin.com'],$admin);
+        User::query()->updateOrCreate(['email' => 'beersinghpanwar@gmail.com'],$admin);
     }
 }

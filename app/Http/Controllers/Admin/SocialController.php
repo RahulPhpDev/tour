@@ -18,7 +18,7 @@ class SocialController extends Controller
     }
 
     public function store(Request $request) {
-       Social::create($request->only('mobile', 'whats_app', 'email', 'address', 'facebook', 'instagram', 'linkedin', 'youtube', 'twitter'));
+       Social::create($request->only('mobile', 'whats_app', 'email', 'address', 'facebook', 'instagram', 'linkedin', 'youtube', 'twitter', 'branch_address'));
        return redirect()->route('admin.social.index')->with('status','Created' );
     }
 

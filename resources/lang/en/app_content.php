@@ -2,7 +2,7 @@
 
 return [
     'logo_url' => '/assets/img/logo.jpeg',
-    'about_us' => 'Saksham Holidays is online tour operator & Provide complete India tour solutions to domestic and foreign tourists in India trip.',
+    'about_us' => ' <b> Saksham Holidays </b> is one of the growing and reputed travel agency in Uttarakhand. Saksham Holidays Customized tour package for india & Get the most exciting deal with customized and well planned india tour packages , Car Hire, Hotel Reservations A workforce of professionally skilled persons, have added laurels to our business. </br> We have the expertise to provide the quality with effective cost controls over a complex range of Travel Related Services, to ensure that your travel related expenditure budget is well managed ',
     'app_name' => 'Saksham Holidays',
     'inr_code' => '&#x20B9;',
     // service 

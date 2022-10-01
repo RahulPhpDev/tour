@@ -6,7 +6,8 @@ namespace App\Http\Controllers;
 use App\Models\{
     Package,
     Destination,
-    Category
+    Category,
+    Social
 };
 use Illuminate\Http\Request;
 
@@ -15,20 +16,23 @@ class HomePageController extends Controller
     public function index() {
         $packages = Package::limit(20)->get()->sortByDesc('id');
         $destination = Destination::limit(20)->get()->sortByDesc('id');
-//        dd($packages);
         return view('frontend.home' , compact('packages', 'destination'));
     }
 
     public function show($slug) {
 
         $packages = Package::query()->whereSlug($slug)->first();
-    //   dd($packages);
         return view('frontend.package.index', compact('packages'));
 
     }
 
     public function about() {
         return view('frontend.about.index');
+    }
+
+    public function contactUs() {
+        $app_social = Social::first();
+        return view('frontend.utils.contact-us', compact('app_social'));
     }
 
     public function theme($slug) {

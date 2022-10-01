@@ -34,14 +34,26 @@ Route::get('/html', function () {
 
 Route::get('/', [HomePageController::class, 'index'])->name('homepage');
 Route::get('/about-us', [HomePageController::class, 'about'])->name('home.about');
+Route::get('/term-condition', 
+function() {
+    return view('frontend.utils.terms');
+}
+)->name('home.terms');
+
+
+
+Route::get('/contact-us',   [HomePageController::class, 'contactUs'] )->name('home.contact');
+
 
 Route::get('/package/{slug}', [HomePageController::class, 'show'])->name('package.show');
 Route::get('/theme/{slug}', [HomePageController::class, 'theme'])->name('theme.show');
 Route::put('/enquiry', [EnquiryController::class, 'store'])->name('enquiry.store');
+Route::get('/thank-you/{encryptID}', [EnquiryController::class, 'thank'])->name('enquiry.thank');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 
 Route::prefix('admin')->name('admin.')->middleware('auth')->group( function () {
 
@@ -71,7 +83,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group( function () {
     Route::resource('facility', FacilityController::class);
     Route::resource('group', GroupController::class);
     Route::resource('social', SocialController::class)->only('index', 'create', 'store', 'edit', 'update');
-
+   Route::get('enquiry', function () {
+        $records = App\Models\Enquiry::latest()->paginate(10);    
+        // dd($records);
+        return view('admin.enquiry.index', compact('records'));
+   });
    
 });
 require __DIR__.'/auth.php';

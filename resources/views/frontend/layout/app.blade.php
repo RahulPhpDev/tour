@@ -1,15 +1,42 @@
 <html>
     <head>
-        <title>{{trans('app_content.app_name')}}: @yield('title')</title>
+        <title>{{trans('app_content.app_name')}}: Tour And Travel @yield('title')</title>
 
         @include('frontend.layout.style')
+        <meta charset="UTF-8">
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+         <!-- Primary Meta Tags -->
+    <meta name="title" content="Best Tour and Travel in India">
+    <meta name="description" content="Sakham Holiday ">
+    <meta name="keywords" content="Tour and travel, Best Tour and Travel in Uttarakhand, Best Tour and Travel in India, Best Tour and Travel in Delhi">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="sakshamholidays.com">
+    <meta property="og:title" content="Sakham Holiday - Best tour operator">
+    <meta property="og:description" content="Tour and travel, Best Tour and Travel in Uttarakhand, Best Tour and Travel in India, Best Tour and Travel in Delhi">
+    <meta property="og:image" content="{{trans('app_content.logo_url') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="sakshamholidays.com">
+    <meta property="twitter:title" content="Sakham Holiday - Best tour operator">
+    <meta property="twitter:description" content="Tour and travel, Best Tour and Travel in Uttarakhand, Best Tour and Travel in India, Best Tour and Travel in Delhi">
+    <meta property="twitter:image" content="{{trans('app_content.logo_url') }}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{trans('app_content.logo_url') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{trans('app_content.logo_url') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{trans('app_content.logo_url') }}">
 
     </head>
     <body>
        @include('frontend.layout.topbar')
             @if(
-                request()->route()->getName() === 'homepage' ||
-                request()->route()->getName() === 'home.about'
+                optional(request()->route())->getName() === 'homepage' ||
+                optional(request()->route())->getName() === 'home.about'
             )
                 @include('frontend.layout.carousel')
             @endif
