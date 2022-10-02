@@ -72,7 +72,7 @@
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Theme</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 @foreach($app_categories as $category) 
-                                   <a href="{{route('theme.show', $category->slug)}}" class="dropdown-item">{{$category->type}}</a>
+                                   <a href="{{route('theme.show', $category->slug)}}" class="dropdown-item mobile-dropdown-item">{{$category->type}}</a>
                                 @endforeach
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Packages</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 @foreach($app_packages as $package) 
-                                   <a href="{{route('package.show', $package->slug)}}" class="dropdown-item">{{$package->title}}</a>
+                                   <a href="{{route('package.show', $package->slug)}}" class="dropdown-item mobile-dropdown-item">{{$package->title}}</a>
                                 @endforeach
                                
                             </div>
@@ -91,4 +91,19 @@
             </nav>
         </div>
     </div>
+
+    <style>
+        .mobile-dropdown-item {
+            margin-bottom: 11px;
+            padding-bottom: 11px;
+            border-bottom: 2.1px solid #a7cce0;
+        }
+        @media only screen and (max-width: 600px) {
+        .mobile-dropdown-item {
+            width: 100%;
+            padding-inline: 0.2rem;
+            white-space: normal;
+        }
+    }
+        </style>
     <!-- Navbar End -->

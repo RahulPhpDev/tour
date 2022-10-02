@@ -32,5 +32,4 @@
 
   gtag('config', 'AW-825622930');
 
-  $('#toast').toast('show')
 </script>

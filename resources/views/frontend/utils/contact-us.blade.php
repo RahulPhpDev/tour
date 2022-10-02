@@ -7,8 +7,10 @@
             <div class = "col-md-6 col-lg-6 col-xs-12 contact-us-section">
                    <h5 class="mb-4" style="letter-spacing: 5px;">Contact Us</h5>
                     <p class="pr-5"><b>Registered Office:</b> <i class="fa fa-map-marker-alt mr-2"></i>{{$app_social->address}}</p>
-                    <p class="pr-5"><b>Brach Office: </b> <i class="fa fa-map-marker-alt mr-2"></i>{{$app_social->branch_address}}</p>
+                    <p class="pr-5"><b>Brach Address: </b> <i class="fa fa-map-marker-alt mr-2"></i>{{$app_social->branch_address}}</p>
                     <p><i class="fa fa-envelope mr-2"></i> {{$app_social->email}}</p>
+                     <p><i class="fa fa-envelope mr-2"></i>   sakshamholidays.b@gmail.com </p>
+                   
                     <p><a href="tel:{{$app_social->mobile}}"><i class="fa fa-phone-alt mr-2"></i>+91   {{$app_social->mobile}} </a> </p>  
             </div>
 
@@ -44,11 +46,10 @@
       <label for="inputState">Number Of Adult</label>  <span >*</span>
       <select name="adult" required id="inputState" class="form-control">
         <option selected>Choose...</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+         @for ($i = 0; $i < 13; $i++)
+        <option value ="{{$i}}">{{$i}}</option>
+        @endfor
+        <option value ="13">More Than 12</option>
       </select>
     </div>
 
@@ -56,11 +57,10 @@
       <label for="inputState">Number Of Child </label>  <span >*</span>
       <select name="child" required id="inputState" class="form-control">
         <option selected>Choose...</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+       @for ($i = 0; $i < 13; $i++)
+        <option value ="{{$i}}">{{$i}}</option>
+        @endfor
+        <option value ="13">More Than 12</option>
       </select>
     </div>
 </div>

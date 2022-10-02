@@ -11,10 +11,10 @@
    			<table class="items-center w-full bg-transparent border-collapse">
    				<thead> 
    					<th class="{{$thClass}}"> City </th>
-   					<th class="{{$thClass}}"> Budget </th>
-   					<th class="{{$thClass}}"> 2 Star </th>
+   					<th class="{{$thClass}}"> 2 Star  </th>
    					<th class="{{$thClass}}"> 3 Star </th>
    					<th class="{{$thClass}}"> 4 Star </th>
+   					<th class="{{$thClass}}"> 5 Star </th>
    				</thead>
 
    				<tbody id="cities-tbody">

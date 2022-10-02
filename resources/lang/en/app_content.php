@@ -13,11 +13,11 @@ return [
 
     //testimonial
     'deni' => [
-        'name' => 'Deni Fearmen',
+        'name' => 'Kalidasan',
         'comment' => 'I have travel in Uttarakhand with Sakham Travel and they are so polite and helpful during the whole journey and they give a fair price '
     ],
     'rahul' => [
         'name' => 'Rahul Chauhan',
-        'comment' => "After Marriage I book Sakhsam Travel's Golden Triangle Tour Package and arrange the best hotel in a fair price",
+        'comment' => "After Marriage I book Sakhsam Holidays Golden Triangle Tour Package and arrange the best hotel in a fair price",
     ]
 ];

@@ -11,7 +11,7 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <a href="{{route('package.show', $package->slug)}}" class="cursor-pointer text-decoration-none">
                     <div class="package-item bg-white mb-2">
-                        <img class="package-src"   src="{{ $package->src}}" alt="">
+                        <img class="package-src img-fluid"   src="{{ $package->src}}" alt="">
                         <div class="p-4">
                             <div class="d-flex justify-content-between mb-3">
                                  <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$package->destination}}</small>

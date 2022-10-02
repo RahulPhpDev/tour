@@ -39,9 +39,10 @@
             <div class="col-lg-4 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
                 <p><i class="fa fa-map-marker-alt mr-2"></i>Reg Office: {{$app_social->address}}</p>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>Branch Office:{{$app_social->branch_address}}</p>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>Branch Office: {{$app_social->branch_address}}</p>
                 <p><a href="tel:{{$app_social->mobile}}"><i class="fa fa-phone-alt mr-2"></i>+91  {{$app_social->mobile}}</p></a>
                 <p><i class="fa fa-envelope mr-2"></i> {{$app_social->email}}</p>
+                <p><i class="fa fa-envelope mr-2"></i> sakshamholidays.b@gmail.com</p>
                 
                 
             </div>

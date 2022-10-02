@@ -22,7 +22,7 @@
 
 	            <div>
 	                <x-label for="name" :value="__('Description')" />
-	                <textarea class="editor{{$loop->index}}" name="description[{{$key}}]">{{$itinerary->description}}</textarea>
+	                <textarea class="editor{{$loop->index}} form-control" style ="width:100% !important" name="description[{{$key}}]">{{$itinerary->description}}</textarea>
 	            </div>
             @endforeach
 
@@ -32,14 +32,13 @@
 		                <x-input id="title" 
 		                        placeholder="Title"
 		                        name="title[{{$times}}]" 
-		                        required
 		                />
 		            </div>
 
 
 		            <div>
 		                <x-label for="name" :value="__('Description')" />
-		                <textarea id="editor2" class="editor{{$times}}" name="description[{{$times}}]"></textarea>
+		                <textarea id="editor2" class="editor{{$times}} form-control"  style ="width:100% !important" cols = "20" name="description[{{$times}}]"></textarea>
 		            </div>
             @endif
 
@@ -68,15 +67,15 @@
 @push('scripts')
     <script type="text/javascript">
 
-    	$( document ).ready(function() {
-			let time = $("#times").val();
-			time++
-			console.log('time', time)
-			for( let i = 0; i < time; i++) {
-				console.log(i, ' i time');
-				 ClassicEditor.create( document.querySelector( `.editor${i}` ) )
-			}
-	});
+//     	$( document ).ready(function() {
+// 			let time = $("#times").val();
+// 			time++
+// 			console.log('time', time)
+// 			for( let i = 0; i < time; i++) {
+// 				console.log(i, ' i time');
+// 				 ClassicEditor.create( document.querySelector( `.editor${i}` ) )
+// 			}
+// 	});
 
 
 function renderMore() {

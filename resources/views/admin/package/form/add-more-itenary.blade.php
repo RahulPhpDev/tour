@@ -11,19 +11,19 @@ $time = request()->query('time');
             </div>
             <div>
                 <x-label for="name" :value="__('Description')" />
-                <textarea id="editor3" class="editor2" name="description[{{$time }}]"></textarea>
+                <textarea id="editor3" class="editor2" style ="width:100% !important" name="description[{{$time }}]"></textarea>
 
             </div>
 
 
     <script type="text/javascript">
 
-        $( document ).ready(function() {
-            ClassicEditor
-                    .create( document.querySelector( '#editor3' ) )
-                    .catch( error => {
-                        console.error( error );
-                    } );
+        // $( document ).ready(function() {
+        //     ClassicEditor
+        //             .create( document.querySelector( '#editor3' ) )
+        //             .catch( error => {
+        //                 console.error( error );
+        //             } );
 
-            });
+        //     });
         </script>

@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>{{trans('app_content.app_name')}}: Tour And Travel @yield('title')</title>
+        <title>{{trans('app_content.app_name')}}: Saksham Holidays is one of the growing and reputed travel agency in India. @yield('title')</title>
 
         @include('frontend.layout.style')
         <meta charset="UTF-8">

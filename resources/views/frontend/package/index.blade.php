@@ -17,7 +17,7 @@ $packagesImage = array_merge($merged->toArray(), [$packages->src] );
                     <div id="package-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         @foreach($packagesImage as $img)
-                        <div style = "width: 543px; height: 380.68px; overflow: hidden; visibility: visible;" @class([
+                        <div style = "width: 543px; height: 380.68px; max-width:100%;overflow: hidden; visibility: visible;" @class([
                                             'carousel-item',
                                             'active' => $loop->index == 0
                                         ]) 
@@ -36,7 +36,7 @@ $packagesImage = array_merge($merged->toArray(), [$packages->src] );
                             <div class="flex">
                             <i class= "text-success fa fa-calendar-alt"></i>
                             <span  class ="text-primary"> {{ $packages->duration}} </span>
-                            <span class="inline h5 ml-5"> &#x20B9; :{{$packages->price ?: 'On Request'}}</span>
+                            <span class="inline h5 ml-5 package-price"> &#x20B9; :{{$packages->price ?: 'On Request'}}</span>
                         </div>
                     </div>
                     
@@ -62,7 +62,7 @@ $packagesImage = array_merge($merged->toArray(), [$packages->src] );
                 </div>
         </div>
 
-        <div class="row m-5">
+        <div class="row ml-3 margin-desktop">
             <div class = "col-lg-7 ">
            
             <h4 class="mb-3 itinerary-title uppercase"> itinerary </h4>
@@ -92,14 +92,14 @@ $packagesImage = array_merge($merged->toArray(), [$packages->src] );
                     <div class="hotel-city">
                             <h5 style = "color:green"> We  Arrange Hotel on Demands</h5>
                             
-                    <table class="table table-striped">
+                    <table class="table table-striped table-responsive">
                         <thead>
                         <tr>
                             <th>City</th>
-                            <th>Budget</th>
                             <th>2 Star</th>
                             <th>3 Star</th>
                             <th>4 Star</th>
+                            <th>5 Star</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -129,6 +129,7 @@ $packagesImage = array_merge($merged->toArray(), [$packages->src] );
     
     @push('styles')
        <style>
+       
         .itinerary-title 
         {
             font-variant: all-small-caps;
@@ -220,7 +221,7 @@ $packagesImage = array_merge($merged->toArray(), [$packages->src] );
         .package-title {
             margin-bottom: 2rem;
         }
-        .package-title::after {
+        /* .package-title::after {
             position: absolute;
             height: 3px;
             width: 60%;
@@ -228,7 +229,7 @@ $packagesImage = array_merge($merged->toArray(), [$packages->src] );
             top: 2.7rem;
             left: 1rem;
             background-image: linear-gradient(to right, #7700ff , #07ff00);
-        }
+        } */
         .package-container {
             /* background-color: rgba(0, 0, 0, 0.6); */
             padding-top: 3rem !important;
@@ -258,30 +259,7 @@ $packagesImage = array_merge($merged->toArray(), [$packages->src] );
                 font-weight: 600;
                 color: #2a0000;
             }
-            .customize-plan::before {
-                width: 50%;
-                /* border-style: dotted;
-                border-width:1px; */
-
-                height: 2px;
-                position: absolute;
-                content: '';
-                bottom: 1.5rem;
-                left: 0;
-                background-image: linear-gradient(to bottom right, red, yellow);
-            }
-            .customize-plan::after {
-                width: 60%;
-                height: 2px;
-                bottom: -5px;
-                left: 15px;
-                position: absolute;
-                content: '';
-                top:22;
-                /* border-style: dotted;
-                border-width:1px; */
-                background-image: linear-gradient(to bottom right, red, yellow);
-            }
+         
 .itinerary-details {
     line-height: 1.8;
     text-align: justify;
@@ -302,11 +280,35 @@ $packagesImage = array_merge($merged->toArray(), [$packages->src] );
 .facility-icon {
     color: #01bd22;
 }
-@media (max-width: 800px) {
+.package-row {
+        margin:0.2rem;
+    }
+    @media only screen and (max-width: 600px) {
+        .carousel-item {
+            max-width: 100% !important;
+            height: 228px !important;
+        }
+        .carousel-item > img {
+                max-width: 100% !important;
+            height: 212px!important;
+        }
+        .package-price {
+                margin-top: 14px;
+                display: block;
+                margin-left: 0 !important;
+            }
+    }
+@media (min-width: 1200px) {
     .package-row {
         margin:2rem;
     }
+    .margin-desktop {
+            margin: 3rem;
+        }
     
+        .itinerary-details {
+            padding-inline:1.5rem;
+        }
  }
            
         </style>

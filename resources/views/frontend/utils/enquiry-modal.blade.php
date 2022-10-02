@@ -41,11 +41,10 @@
       <label for="inputState">Number Of Adult</label>  <span >*</span>
       <select name="adult" required id="inputState" class="form-control">
         <option selected>Choose...</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+        @for ($i = 0; $i < 13; $i++)
+        <option value ="{{$i}}">{{$i}}</option>
+        @endfor
+        <option value ="13">More Than 12</option>
       </select>
     </div>
 
@@ -53,11 +52,10 @@
       <label for="inputState">Number Of Child </label>  <span >*</span>
       <select name="child" required id="inputState" class="form-control">
         <option selected>Choose...</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+        @for ($i = 0; $i < 13; $i++)
+        <option value ="{{$i}}">{{$i}}</option>
+        @endfor
+        <option value ="13">More Than 12</option>
       </select>
     </div>
 </div>
