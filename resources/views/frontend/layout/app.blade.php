@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>{{trans('app_content.app_name')}}: @yield('title', 'Saksham Holidays is one of the growing and reputed travel agency in India.')</title>
+        <title> @yield('title', 'Saksham Holidays is one of the growing and reputed travel agency in India.'): {{trans('app_content.app_name')}}</title>
 
         @include('frontend.layout.style')
         <meta charset="UTF-8">
