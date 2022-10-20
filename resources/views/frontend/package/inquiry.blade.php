@@ -72,12 +72,21 @@
     top: 2;
     height:auto;
     border-radius: 13px;
-    padding-block:2rem;
 }
 .inquiry-form > form {
   padding-top:20px;
-  padding-left: 20px;
   padding-right:20px;
+  padding-left: 20px;
+  padding-bottom:10px;
+}
+@media only screen and (min-width: 1200px) {
+  .inquiry-form {
+    border-radius: 13px;
+    padding-block:2rem;
+}
+.inquiry-form > form {
+ 
+}
 }
 
     </style>

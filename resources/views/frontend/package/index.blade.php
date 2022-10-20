@@ -5,7 +5,7 @@ $packagesImage = array_merge($merged->toArray(), [$packages->src] );
 
 @endphp
 @extends('frontend.layout.app')
-
+@section('title') {{ str_replace('-', ' ', ucfirst($slug)) }} @endsection
 @section('content')
 <!-- https://www.visittnt.com/golden-triangle-tours/4-nights-5-days-delhi-agra-jaipur.html -->
 <div class="pg-parent"> 
@@ -36,7 +36,7 @@ $packagesImage = array_merge($merged->toArray(), [$packages->src] );
                             <div class="flex">
                             <i class= "text-success fa fa-calendar-alt"></i>
                             <span  class ="text-primary"> {{ $packages->duration}} </span>
-                            <span class="inline h5 ml-5 package-price"> &#x20B9; :{{$packages->price ?: 'On Request'}}</span>
+                            <span class="inline h5 ml-5 package-price"> &#x20B9; : {{$packages->price ?: ' On Request'}}</span>
                         </div>
                     </div>
                     

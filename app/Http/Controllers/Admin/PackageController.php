@@ -118,7 +118,8 @@ public function storeOverview($request)
 public function storeItenary($request)
 {
    if (!$request->query('id')) return route()->redirect()->with('status', 'Please add overview first');
-    $package->update(['completed_step' => $package->completed_step == 5 ? 5 : 3 ] );  
+   $package = Package::query()->findOrFail($request->query('id')); 
+   $package->update(['completed_step' => $package->completed_step == 5 ? 5 : 3 ] );  
     if ($package->itinerary) $package->itinerary()->delete();
         collect($request->title)->map( function ($item, $key) use ($package, $request) {
            if ($item ) {

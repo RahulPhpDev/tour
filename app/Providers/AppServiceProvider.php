@@ -6,9 +6,10 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\{
     Category,
     Package,
-    Social
+    Social,
+    Visitor
 };
-
+use Carbon\Carbon;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -31,16 +32,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $dt = Carbon::now();
+       
+        $totalVisitor = $dt->dayOfYear + $dt->year + $dt->month + $dt->hour +$dt->dayOfYear +$dt->weekOfYear +$dt->daysInMonth;
+       
+       
             $this->app_categories =  Category::query()->whereHas('package')->get();
             $this->app_packages =  Package::whereIn('completed_step', [4,5])->get();
             $this->app_social =  Social::firstOr(function () {
                 return new Social;
             });
-       view()->composer('frontend.layout.app', function ($view) {
+         $this->visitor =    Visitor::first();
+       view()->composer('frontend.layout.app', function ($view) use (  $totalVisitor) {
              $view->with([
                 'app_packages' => $this->app_packages ,
                 'app_categories' => $this->app_categories,
-                'app_social' => $this->app_social
+                'app_social' => $this->app_social,
+                'total_visitor' => $totalVisitor +  $this->visitor->number
               ]);
        });
    

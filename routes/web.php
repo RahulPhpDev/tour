@@ -10,7 +10,8 @@ use  App\Http\Controllers\Admin\{
     CategoryController,
     FacilityController,
     GroupController,
-    SocialController
+    SocialController,
+    VisitorController
 };
 use App\Models\{
     Image
@@ -30,7 +31,17 @@ use Illuminate\Support\Facades\Storage;
 Route::get('/html', function () {
     return view('frontend.basic');
 });
-
+// Route::get('send-mail', function () {
+   
+//     $details = [
+//         'title' => 'Mail from ItSolutionStuff.com',
+//         'body' => 'This is for testing email using smtp'
+//     ];
+   
+//     \Mail::to('mrrahul2016@gmail.com')->send(new \App\Mail\EnquiryMail($details));
+   
+//     dd("Email is Sent.");
+// });
 
 Route::get('/', [HomePageController::class, 'index'])->name('homepage');
 Route::get('/about-us', [HomePageController::class, 'about'])->name('home.about');
@@ -64,19 +75,20 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group( function () {
          if (file_exists($image_path )) {
                 unlink($image_path );
             }
-    $image->delete();
-        return redirect()->route('admin.package.index')->with('status', 'Image Deleted');
-    })->name('image.destroy');
+        $image->delete();
+            return redirect()->route('admin.package.index')->with('status', 'Image Deleted');
+        })->name('image.destroy');
 
 
     Route::resource('destination', App\Http\Controllers\Admin\DestinationController::class);
    
-   Route::get('/package/add-more-itenary', function () {
-        return view('admin.package.form.add-more-itenary');
-    })->name('package.add-more-itenary');
-   Route::get('/package/add-more-cities-hotel', function () {
-        return view('admin.package.form.add-more-cities-hotel');
-   });
+        Route::get('/package/add-more-itenary', function () {
+                return view('admin.package.form.add-more-itenary');
+            })->name('package.add-more-itenary');
+
+        Route::get('/package/add-more-cities-hotel', function () {
+                return view('admin.package.form.add-more-cities-hotel');
+        });
 
     Route::resource('package', App\Http\Controllers\Admin\PackageController::class);
     Route::resource('category', CategoryController::class);
@@ -85,8 +97,17 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group( function () {
     Route::resource('social', SocialController::class)->only('index', 'create', 'store', 'edit', 'update');
    Route::get('enquiry', function () {
         $records = App\Models\Enquiry::latest()->paginate(10);    
-        // dd($records);
         return view('admin.enquiry.index', compact('records'));
+   })->name('enquiry');
+   Route::resource('visitor', VisitorController::class)->only('create', 'store');
+
+   Route::get('command/{str}',  function ($str) {
+    echo $str;
+    $artisan = \Artisan::call($str);
+    
+    $output = \Artisan::output();
+    echo '<pre>';
+    return $output;
    });
    
 });

@@ -26,6 +26,10 @@
                     <a class="btn btn-outline-primary btn-square" target="_blank" href="//{{$app_social->instagram}}"><i class="fab fa-instagram"></i></a>
                 @endif    
                 </div>
+                <div class="mt-2">
+                    
+                  <!-- Total Visitor:   <span class="text-white" > {{$total_visitor}} </span>  -->
+                </div>
             </div>
             <div class="col-lg-4 col-md-6 mb-5">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>

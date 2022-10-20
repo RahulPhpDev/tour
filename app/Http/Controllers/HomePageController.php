@@ -20,9 +20,8 @@ class HomePageController extends Controller
     }
 
     public function show($slug) {
-
         $packages = Package::query()->whereSlug($slug)->first();
-        return view('frontend.package.index', compact('packages'));
+        return view('frontend.package.index', compact('packages', 'slug'));
 
     }
 
@@ -42,6 +41,6 @@ class HomePageController extends Controller
                             $query->whereIn('completed_step', [4,5]);
                         }])
                         ->whereSlug($slug)->get();
-        return view('frontend.theme.index', compact('categories'));
+        return view('frontend.theme.index', compact('categories', 'slug'));
     }
 }

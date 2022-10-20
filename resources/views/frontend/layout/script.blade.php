@@ -32,4 +32,9 @@
 
   gtag('config', 'AW-825622930');
 
+        $('.dropdown-item').on('click', function() {
+          $('.dropdown-menu').collapse('hide');
+      });
+          
+
 </script>

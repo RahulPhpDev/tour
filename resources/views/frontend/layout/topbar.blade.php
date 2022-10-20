@@ -52,7 +52,6 @@
     <!-- Topbar End -->
 
 
-
         <!-- Navbar Start -->
     <div class="container-fluid position-relative nav-bar p-0">
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
@@ -66,26 +65,64 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                     <div class="navbar-nav ml-auto py-0">
-                        <a href="/" class="nav-item nav-link active">Home</a>
-                        <a href="{{route('home.about')}}" class="nav-item nav-link">About</a>
+                  
+                        <a href="/" 
+                         @class([
+                            'nav-item nav-link',
+                            'active' => request()->routeIs('/')
+                            ])>Home</a>
+                        <a href="{{route('home.about')}}"
+                        @class([
+                            'nav-item nav-link',
+                            'active' => request()->routeIs('home.about')
+                            ])>
+                        About</a>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Theme</a>
+                            <a href="#"  data-toggle="dropdown"  @class([
+                            'nav-link dropdown-toggle',
+                            'active' => request()->routeIs('theme.*')
+                            ])>Theme</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 @foreach($app_categories as $category) 
-                                   <a href="{{route('theme.show', $category->slug)}}" class="dropdown-item mobile-dropdown-item">{{$category->type}}</a>
+                                @php
+                                    $themeUrl = "theme/$category->slug";
+                                    $themeLinkClass =  $themeUrl === request()->path() ? 'text-success' : '';
+                                @endphp
+                                   <a href="{{route('theme.show', $category->slug)}}" 
+                                   class ="dropdown-item mobile-dropdown-item {{$themeLinkClass}} ">{{$category->type}}</a>
                                 @endforeach
                             </div>
                         </div>
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Packages</a>
+                            <a href="#"
+                                @class([
+                                'nav-link dropdown-toggle',
+                                'active' => request()->routeIs('package.*')
+                                ])
+                                data-toggle="dropdown"
+                         >Packages</a>
                             <div class="dropdown-menu border-0 rounded-0 m-0">
                                 @foreach($app_packages as $package) 
-                                   <a href="{{route('package.show', $package->slug)}}" class="dropdown-item mobile-dropdown-item">{{$package->title}}</a>
+                                    @php
+                                        $packageUrl = "package/$package->slug";
+                                        $packageLinkClass =  $packageUrl === request()->path() ? 'text-success' : '';
+                                    @endphp
+                                   <a 
+                                    href="{{route('package.show', $package->slug)}}"
+                                     class="dropdown-item mobile-dropdown-item {{$packageLinkClass}}"
+                                     >
+                                     {{$package->title}}
+                                </a>
                                 @endforeach
                                
                             </div>
                         </div>
-                        <a href="{{route('home.contact')}}" class="nav-item nav-link">Contact</a>
+                        <a 
+                        href = "{{route('home.contact')}}"
+                        @class([
+                            'nav-link nav-item',
+                            'active' => request()->routeIs('home.contact')
+                            ]) >Contact</a>
                     </div>
                 </div>
             </nav>

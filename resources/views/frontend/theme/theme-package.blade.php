@@ -25,6 +25,7 @@
               <span class="text-primary"> • </span>
               <span>Best finish<br /></span>
             </div> -->
+            
             <p class="text-truncate mb-4 mb-md-0">
             {!! Str::limit($package->description, 50, '...') !!}
             </p>

@@ -20,9 +20,22 @@ class EnquiryController extends Controller
             'date' => 'required|date',
         ]);
         $enquiry = Enquiry::query()->create(
-            $request->only('name', 'email', 'mobile', 'adult', 'child', 'date')
+            $request->only('name', 'email', 'mobile', 'adult', 'child', 'date', 'enquiry')
         );
-        
+         $details = [
+        'title' => 'Enquiry Email',
+        'name' => $enquiry->name,
+        'email' => $enquiry->email,
+        'mobile' => $enquiry->mobile,
+        'date' => $enquiry->date,
+        'adult' => $enquiry->adult,
+        'child' => $enquiry->child,
+        'enquiry' => $enquiry->enquiry,
+        'created_at' => $enquiry->created_at,
+    ];
+    // 'beersinghpanwar@gmail.com'
+    \Mail::to('beersinghpanwar@gmail.com')->send(new \App\Mail\EnquiryMail($details));
+
         $encryptID = Crypt::encryptString($enquiry->id);
         return redirect()->route('enquiry.thank', $encryptID);
 

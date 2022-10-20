@@ -4173,6 +4173,7 @@ input[type="button"].btn-block {
   }
   .navbar-expand-lg .navbar-nav .dropdown-menu {
     position: absolute;
+    left: -3rem;
   }
   .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 0.5rem;

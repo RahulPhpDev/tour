@@ -7,7 +7,11 @@
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h1 class="display-3 text-white mb-md-4">Let's Discover The World Together</h1>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                            <!-- <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a> -->
+                            <button class="btn btn-primary py-md-3 px-md-5 mt-2" type="button" data-toggle="modal" data-target="#exampleModal">
+                        Book Now
+                        <!-- <a href="" class="btn btn-primary mt-1">Book Now</a> -->
+                        </button>
                         </div>
                     </div>
                 </div>

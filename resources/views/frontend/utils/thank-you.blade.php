@@ -1,4 +1,5 @@
 @extends('frontend.layout.app')
+@section('title') Thank You @endsection
 
 @section('content')
 <div class="box">

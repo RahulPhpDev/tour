@@ -1,4 +1,5 @@
 @extends('frontend.layout.app')
+@section('title') Terms & Condition @endsection
 
 @section('content')
 <div class="pg-parent" style = "padding: 2rem;"> 
