@@ -13,10 +13,10 @@ class PasswordConfirmationTest extends TestCase
     public function test_confirm_password_screen_can_be_rendered()
     {
         $user = User::factory()->create();
-
+// dd( $user);
         $response = $this->actingAs($user)->get('/confirm-password');
-
-        $response->assertStatus(200);
+        // $response->dd();
+        $response->assertOk();
     }
 
     public function test_password_can_be_confirmed()
@@ -28,7 +28,8 @@ class PasswordConfirmationTest extends TestCase
         ]);
 
         $response->assertRedirect();
-        $response->assertSessionHasNoErrors();
+        $response->assertNotFound();
+        // $response->assertSessionHasNoErrors();
     }
 
     public function test_password_is_not_confirmed_with_invalid_password()

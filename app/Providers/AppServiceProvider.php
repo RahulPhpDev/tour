@@ -33,7 +33,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $dt = Carbon::now();
-       
+        $this->app_packages = null;
+        $this->app_categories= null;
+        $this->app_social= null;
         $totalVisitor = $dt->dayOfYear + $dt->year + $dt->month + $dt->hour +$dt->dayOfYear +$dt->weekOfYear +$dt->daysInMonth;
        
        

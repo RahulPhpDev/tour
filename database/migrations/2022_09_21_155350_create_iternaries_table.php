@@ -16,7 +16,6 @@ class CreateIternariesTable extends Migration
 // Itinerary
         Schema::table('packages', function(Blueprint $table) {
             $table->string('src')->nullable()->after('completed_step');
-            $table->string('slug')->nullable()->after('title');
 
             $table->string('destination')->nullable()->after('slug');
         });

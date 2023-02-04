@@ -13,6 +13,7 @@ class CreateVisitorsTable extends Migration
      */
     public function up()
     {
+       
         Schema::create('visitors', function (Blueprint $table) {
             $table->id();
             $table->string('number', 12)->default(20);
